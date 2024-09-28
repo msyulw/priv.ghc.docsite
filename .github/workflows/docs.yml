@@ -46,7 +46,7 @@ jobs:
         run: make build
 
       - name: Archive site
-        uses: actions/upload-pages-artifact@v1
+        uses: actions/upload-pages-artifact@v3
         with:
           path: docs/site
 
