@@ -1,6 +1,7 @@
 name: Deploy Docs
 
 on:
+  pull_request:
   push:
     branches:
       - main
@@ -45,13 +46,15 @@ jobs:
         run: make build
 
       - name: Archive site
-        uses: actions/upload-pages-artifact@v1
+        uses: actions/upload-pages-artifact@v3
         with:
           path: docs/site
 
       - name: Deploy site to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v1
+        uses: actions/deploy-pages@v4
+        with:
+          preview: true
 
       # - name: Build and deploy to GitHub Pages 🏗️ 🚀
       #   working-directory: docs
